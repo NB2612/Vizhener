@@ -4,18 +4,23 @@ import java.util.Scanner;
 
 public class menu {
     void display(Scanner input){
-        String text;
         System.out.println("Hello and welcome!");
         Action action = new Action();
         int action_choice;
         do {
-            System.out.print("Select an action:\n" +
-                    "1 - Enter text\n2 - Set key\n3 - Encrypt\n4 - Decrypt\n5 - Exit\n--> ");
+            System.out.print("""
+                    Select an action:
+                    1 - Enter text
+                    2 - Set key
+                    3 - Encrypt
+                    4 - Decrypt
+                    5 - Exit
+                    -->\s""");
             action_choice = input.nextInt();
             input.skip(".*\n");
             switch (action_choice) {
                 case 1:
-                    System.out.println("Enter text:\n--> ");
+                    System.out.print("Enter text:\n--> ");
                     try {
                         action.setText(input.nextLine());
                     } catch (Exception e){
@@ -35,10 +40,12 @@ public class menu {
                     break;
                 case 3:
                     String enc = action.encrypt();
+                    if (enc==null){ System.out.println("Press ENTER"); break; }
                     System.out.println("Encrypted message: " + enc + "\nPress ENTER");
                     break;
                 case 4:
                     String dec = action.decrypt();
+                    if (dec==null){ System.out.println("Press ENTER"); break; }
                     System.out.println("The decrypted message: " + dec + "\nPress ENTER");
                     break;
                 case 5:
@@ -49,7 +56,7 @@ public class menu {
                     break;
             }
             input.skip(".*\n");
-        } while (action_choice != 4);
+        } while (true);
     }
 
 

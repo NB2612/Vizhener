@@ -9,7 +9,7 @@ class Action {
     public Action(){
         this.text = null; //
         this.key = null; //
-        this.ABC = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuWwXxYyZz123456789:;/.,()-`[]{}=+/<>&?|^%$#@! "; // алфавит
+        this.ABC = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuWwXxYyZz123456789:;/.,()-[]{}=+/<>&?|^%$#@! "; // алфавит
     }
 
     public void setKey(String newKey) {
@@ -20,7 +20,7 @@ class Action {
     public String getKey() {return this.key;}
 
     public String getText() {
-        return text;
+        return this.text;
     }
 
     public void setText(String newText) {
@@ -58,17 +58,15 @@ class Action {
                 result += ABC.charAt(c);
             }
             return result;
-        } else {return null;}//
+        } else {return null;}
     }
 
     private boolean Valitade(){
         if (getKey() == null){
             if (getText() == null){
                 System.out.println(Errors.Get_error(102));
-                return false;
-            } else {
-            System.out.println(Errors.Get_error(101));
-            return false;}
+            } else { System.out.println(Errors.Get_error(101)); }
+            return false;
         } else {return true;}
     }
 }

@@ -11,6 +11,6 @@ public class Main {
         Scanner input = new Scanner(System.in);
         menu menu = new menu();
         menu.display(input);
-        }
+    }
 }
 
